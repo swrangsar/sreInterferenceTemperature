@@ -89,9 +89,9 @@ Though $T_I(f_c,B)$ can be measured easily, inclusion of all signals in its meas
 
 \section{Properties of the Interference Temperature model}
 
-The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming interference to behave like noise. But interference don't behave exactly like noise because we treat all other signals except the licensed one as interference. So, IT can't really model interference well enough.
+The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming that interference behaves like noise. But interference doesn't actually behave like noise because interference includes all other signals other than other than the one from the licensed transmitter. We are defining interference to be that way. So, IT can't really model interference well enough.
 
-The difference between the regulated temperature limit and the measured temperature is the amount of temperature that we are allowed to generate at the receiver.
+The difference between the regulated temperature limit and the measured temperature is the amount of temperature that we are allowed to generate at the receiver. This temperature difference determines how much power our unlicensed transmitter can transmit to comply with the regulations.
 
 The interference temperature $T_I$ can be written in terms of bandwidth $B$ as
 \begin{IEEEeqnarray}{rCl}
@@ -108,7 +108,7 @@ The transmit power $P$ satisfying the general model can be found as
     \label{maxtransmitpower}
 \end{IEEEeqnarray}
 
-We cannot find a closed-form solution for $B$ satisfying the constraint. But if we consider the special case of $S(f) = c$ where $c$ is some constant, then the inequality \eqref{maxtransmitpower} can be rewritten as,
+We cannot find an explicit expression for $B$ satisfying the constraint. But if we consider the special case of $S(f) = c$ where $c$ is some constant, then the inequality \eqref{maxtransmitpower} can be rewritten as,
 \begin{IEEEeqnarray}{rCl}
     P & \leq & \frac{kB}{M}T_L(f_c) - \frac{c}{M} \nonumber\\
     B & \geq & \frac{PM + c}{kT_L(f_c)}
