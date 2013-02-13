@@ -105,6 +105,13 @@ The transmit power $P$ satisfying the general model can be found as
     T_I(f_c,B) + \frac{MP}{kB} & \leq & T_L(f_c) \nonumber \\
     P & \leq & \frac{kB}{M}T_L(f_c) - \frac{kB}{M}T_I(f_c,B) \nonumber \\
     P & \leq & \frac{kB}{M}T_L(f_c) - \frac{1}{BM}\int_{f_c-B/2}^{f_c+B/2}S(f)df
+    \label{maxtransmitpower}
 \end{IEEEeqnarray}
 
+We cannot find a closed-form solution for $B$ satisfying the constraint. But if we consider the special case of $S(f) = c$ where $c$ is some constant, then the inequality \eqref{maxtransmitpower} can be rewritten as,
+\begin{IEEEeqnarray}{rCl}
+    P & \leq & \frac{kB}{M}T_L(f_c) - \frac{c}{M} \nonumber\\
+    B & \geq & \frac{PM + c}{kT_L(f_c)}
+\end{IEEEeqnarray}
+Thus now we have an expression for a minimum transmission bandwidth. Also the maximum transmit power turns out to be $kBT_L(f_c)$. As we increase $B$ the upper bound for transmit power increases. This implies that as we use more bandwidth we can produce more interference.
 \end{document}
