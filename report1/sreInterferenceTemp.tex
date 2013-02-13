@@ -42,8 +42,8 @@ In the ideal model we try to guarantee that
 where,
 \begin{quote}
 \begin{description}
-    \item[$T_L(f_i)\longrightarrow$] the interference temperature limit of the $i$'th receiver at frequency $f_i$
-    \item[$T_I(f_i,B_i)\longrightarrow$] the interference temperature of the $i$'th receiver with frequency $f_i$ and bandwidth $B_i$
+    \item[$T_L(f_i)\longrightarrow$] the interference temperature limit of the $i$'th receiver at center frequency $f_i$
+    \item[$T_I(f_i,B_i)\longrightarrow$] the interference temperature of the $i$'th receiver with center frequency $f_i$ and bandwidth $B_i$
     \item[$P\longrightarrow$] power of the unlicensed transmitter
     \item[$M_i\longrightarrow$] a constant between 0 and 1 representing the attenuation of the  transmitted power $P$ at the $i$'th receiver.
 \end{description}
@@ -80,16 +80,21 @@ If we constrain the transmitted power $P$ to be less than the one in the ideal m
     B(T_L - T_I(f_c,B)) \leq  B_i(T_L - T_I(f_i,B_i)) \qquad \forall \quad 1 \leq i \leq n \label{powerCompare}
 \end{equation}
 Suppose, every receiver receives a power $P_i$ and suppose the noise floor for all the receivers is the thermal noise temperature $T_N$, then we can rewrite the above equation \eqref{powerCompare} as,
-\begin{equation}
-    kBT_L(f_c)(B-B_i) + kBT_N\sum_{j=1}^{N}B_j \leq \sum_{j=1}^{N}B_jP_j \qquad \forall \quad 1 \leq i\leq n
-\end{equation}
+\begin{IEEEeqnarray}{rCl}
+    BT_L - BT_I(f_c,B) & \leq  & B_iT_L - B_iT_I(f_i,B_i) \nonumber\\  
+    BT_L - B_iT_L & \leq  &  BT_I(f_c,B) - B_iT_I(f_i,B_i) \nonumber\\  
+    T_L(B- B_i) & \leq  &  BT_I(f_c,B) - B_iT_I(f_i,B_i) \nonumber\\  
+    T_L(B - B_i) + B_iT_I(f_i,B_i) & \leq  &  BT_I(f_c,B) \nonumber\\
+    kBT_L(B - B_i) + kBB_iT_I(f_i,B_i) & \leq  &  kB^2T_I(f_c,B) \nonumber\\  
+    kBT_L(f_c)(B-B_i) + kBT_N\sum_{j=1}^{N}B_j & \leq & \sum_{j=1}^{N}B_jP_j \qquad \forall \quad 1 \leq i\leq n
+\end{IEEEeqnarray}
 
 Though $T_I(f_c,B)$ can be measured easily, inclusion of all signals in its measurement gives rise to a more complex interference environment.
 
 
 \section{Properties of the Interference Temperature model}
 
-The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming that interference behaves like noise. But interference doesn't actually behave like noise because interference includes all other signals other than other than the one from the licensed transmitter. We are defining interference to be that way. So, IT can't really model interference well enough.
+The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming that interference behaves like noise. But interference doesn't actually behave like noise because interference includes all other signals other than other than the one from the licensed transmitter. We are defining interference to be that way. So, \emph{Interference Temperature} can't really model interference well enough.
 
 The difference between the regulated temperature limit and the measured temperature is the amount of temperature that we are allowed to generate at the receiver. This temperature difference determines how much power our unlicensed transmitter can transmit to comply with the regulations.
 
@@ -103,6 +108,7 @@ The interference temperature $T_I$ can be written in terms of bandwidth $B$ as
 The transmit power $P$ satisfying the general model can be found as
 \begin{IEEEeqnarray}{rCl}
     T_I(f_c,B) + \frac{MP}{kB} & \leq & T_L(f_c) \nonumber \\
+    \frac{MP}{kB} & \leq & T_L(f_c) - T_I(f_c,B) \nonumber \\
     P & \leq & \frac{kB}{M}T_L(f_c) - \frac{kB}{M}T_I(f_c,B) \nonumber \\
     P & \leq & \frac{kB}{M}T_L(f_c) - \frac{1}{BM}\int_{f_c-B/2}^{f_c+B/2}S(f)df
     \label{maxtransmitpower}
