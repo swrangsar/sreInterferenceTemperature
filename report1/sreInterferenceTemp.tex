@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\begin{document}
+
+\title{Report for the Supervised Research Exposition on Interference Temperature}
+\author{Swrangsar Basumatary (09d07040)}
+
+\maketitle
+
+\begin{abstract}
+This is a report of what I have understood after reading papers related to Interference Temperature as part of my Supervised Research Exposition.
+\end{abstract}
+
+\section{Introduction}
+The concept of interference temperature was introduced by the FCC as a new metric for quantifying and managing interference. Using this model, cognitive radios (CRs) operating in licensed frequency bands would be able to measure their current interference environment and adjust their transmission characteristics so as not to raise the interference temperature over a regulatory limit.
+
+As of now it is hard to predict if interference temperature is going to be practical because no one has been able to come up with a solution that is agreed upon by everyone. The research on interference temperature has mostly been abandoned but there is some hope of a comeback.
+
+\section{Interference Temperature model}
+Interference temperature, $T_I$ is defined as
+\begin{equation*} 
+    T_I(f_c , B) = \frac{P_I(f_c , B)}{kB}
+\end{equation*}
+where $P_I(f_c,B)$ is the average interference power centered at frequency, $f_c$, and covering bandwidth
+$B$. Here, $k$ is the Boltzmann's constant $k = 1.38 * 10^{-23} $ joules per degree Kelvin. In SI system, the unit of interference temperature turns out to be \emph{degrees Kelvin}.
+
+The Interference Temperature model is not clear cut. There is ambiguity regarding whether to represent $T_I$ in terms of the transmitter's parameters ($f_c$ and $B$) or the ones from the $i$'th receiver ($f_i$ and $B_i$).
+This results into two models:
+\begin{enumerate}[a)]
+    \item Ideal model
+    \item Generalized model
+\end{enumerate}
+
+\subsection{Ideal model}
+
+In the ideal model we try to guarantee that
+\begin{equation}
+    T_I(f_i,B_i) + \frac{M_iP}{kB_i} \leq T_L(f_i) \qquad \forall \quad 1 \leq i \leq n \label{idealModel}
+\end{equation}
+where,
+\begin{quote}
+\begin{description}
+    \item[$T_L(f_i)\longrightarrow$] the interference temperature limit of the $i$'th receiver at frequency $f_i$
+    \item[$T_I(f_i,B_i)\longrightarrow$] the interference temperature of the $i$'th receiver with frequency $f_i$ and bandwidth $B_i$
+    \item[$P\longrightarrow$] power of the unlicensed transmitter
+    \item[$M_i\longrightarrow$] a constant between 0 and 1 representing the attenuation of the  transmitted power $P$ at the $i$'th receiver.
+\end{description}
+\end{quote}
+
+In words, equation \eqref{idealModel} means we try to keep the sum of the interference at the receiver (due to all other factors except the unlicensed transmitter) and the interference caused by the unlicensed transmitter's signal below the temperature limit $T_L$. Usually, a unified factor $M$ is used instead of $M_i$'s because we do not know the distance of every receiver. The factor $M$ is fixed by the regulators.
+
+\subsubsection*{Challenges in implementing the ideal model}
+
+\begin{itemize}
+    \item It's hard to differentiate between licensed and unlicensed signals unless we already know the coexisting transmitters in the surrounding environment.
+    \item It's difficult to measure the interference temperature $T_I$ in the presence of a licensed signal. We can determine the noise floor only when there is no signal power. For that we have to know when the signal power is going to be zero if it does. If the signal periodically goes to zero then we can measure the $T_I$ during the interval when it goes to zero. The other way is to take an average of the noise floor just outside the licensed signal band but we need to have information about the licensed signal's properties, like center frequency and bandwidth, to do that.
+\end{itemize}
+
+
+\subsection{Generalized model}
+
+The generalized model assumes that we have no a priori knowledge about the signal environment. Thus the constraint in this model has to be written in terms of the unlicensed transmitter's parameters.
+\begin{equation}
+    T_I(f_c,B) + \frac{MP}{kB} \leq T_L(f_c) \label{generalizedModel}
+\end{equation}
+where,
+\begin{quote}
+\begin{description}
+    \item[$T_L(f_c)\longrightarrow$] the interference temperature limit of the unlicensed transmitter
+    \item[$T_I(f_c,B)\longrightarrow$] the interference temperature of the unlicensed transmitter
+    \item[$P\longrightarrow$] power of the unlicensed transmitter
+    \item[$M\longrightarrow$] a constant between 0 and 1 representing the factor by which the transmitted power gets attenuated
+\end{description}
+\end{quote}
+
+If we constrain the transmitted power $P$ to be less than the one in the ideal model, from the equations \eqref{idealModel} and \eqref{generalizedModel} we get the following constraint,
+\begin{equation}
+    B(T_L - T_I(f_c,B)) \leq  B_i(T_L - T_I(f_i,B_i)) \qquad \forall \quad 1 \leq i \leq n \label{powerCompare}
+\end{equation}
+Suppose, every receiver receives a power $P_i$ and suppose the noise floor for all the receivers is the thermal noise temperature $T_N$, then we can rewrite the above equation \eqref{powerCompare} as,
+\begin{equation}
+    kBT_L(f_c)(B-B_i) + kBT_N\sum_{j=1}^{N}B_j \leq \sum_{j=1}^{N}B_jP_j \qquad \forall \quad 1 \leq i\leq n
+\end{equation}
+
+Though $T_I(f_c,B)$ can be measured easily, inclusion of all signals in its measurement gives rise to a more complex interference environment.
+
+
+\section{Properties of Interference Temperature model}
+
+The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming interference to behave like noise. But since we treat all other signals except the licensed one as interference, it can't really model interference well enough.
+
+\end{document}

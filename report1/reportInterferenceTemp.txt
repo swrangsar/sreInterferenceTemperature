@@ -1,0 +1,9 @@
+Measurement of Interference Temperature
+
+The concept of interference temerature was introduced by the FCC for quantifying and managing interference. Using this model, cognitive radios (CRs) operating in licensed frequency bands would be able to measure their current interference environment and adjust their transmission characteristics so as not to raise the interference temperature over a regulatory limit.
+
+As of now it is hard to predict if interference temperature is going to be practical because no one has been able to come up with a concrete solution for measuring interference temperature. The research on interference temperature has mostly been abondoned but there is some hope of a comeback.
+
+
+The Interference Temperature Model
+
