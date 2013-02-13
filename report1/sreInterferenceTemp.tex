@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{enumerate}
 \usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
 \begin{document}
 
 \title{Report for the Supervised Research Exposition on Interference Temperature}
@@ -86,8 +87,24 @@ Suppose, every receiver receives a power $P_i$ and suppose the noise floor for a
 Though $T_I(f_c,B)$ can be measured easily, inclusion of all signals in its measurement gives rise to a more complex interference environment.
 
 
-\section{Properties of Interference Temperature model}
+\section{Properties of the Interference Temperature model}
 
-The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming interference to behave like noise. But since we treat all other signals except the licensed one as interference, it can't really model interference well enough.
+The problem with Interference Temperature model is that it is too simple. It tries to quantify interference assuming interference to behave like noise. But interference don't behave exactly like noise because we treat all other signals except the licensed one as interference. So, IT can't really model interference well enough.
+
+The difference between the regulated temperature limit and the measured temperature is the amount of temperature that we are allowed to generate at the receiver.
+
+The interference temperature $T_I$ can be written in terms of bandwidth $B$ as
+\begin{IEEEeqnarray}{rCl}
+    T_I(f_c,B) & = & \frac{1}{kB}P_I(f_c,B) \nonumber\\
+    & = & \frac{1}{kB}\left(\frac{1}{B}\int_{f_c-B/2}^{f_c+B/2}S(f)df\right) \nonumber\\
+    & = & \frac{1}{B^2k}\int_{f_c-B/2}^{f_c+B/2}S(f)df
+\end{IEEEeqnarray}
+
+The transmit power $P$ satisfying the general model can be found as
+\begin{IEEEeqnarray}{rCl}
+    T_I(f_c,B) + \frac{MP}{kB} & \leq & T_L(f_c) \nonumber \\
+    P & \leq & \frac{kB}{M}T_L(f_c) - \frac{kB}{M}T_I(f_c,B) \nonumber \\
+    P & \leq & \frac{kB}{M}T_L(f_c) - \frac{1}{BM}\int_{f_c-B/2}^{f_c+B/2}S(f)df
+\end{IEEEeqnarray}
 
 \end{document}
