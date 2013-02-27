@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\title{Estimation of Interference Temperature}
+\author{Swrangsar Basumatary}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{equation*}
+    T_I(f_c, B) = \frac{P_I(f_c, B)}{kB}
+\end{equation*}
+
+\begin{equation*}
+    \{w_t^{(k)}\}_{t=1}^{N}
+\end{equation*}
+
+\begin{equation}
+   Y_k(f) = \sum_{t=1}^N w_t^{(k)} x(t) e^{-j2\pi{}ft}, \qquad k = 0, 1, ...K-1
+\end{equation}
+
+\begin{equation}
+    p = 2NW
+\end{equation}
+
+\begin{equation}
+    \hat{S}(f) = \frac{\sum_{k=0}^{K-1} \lambda_k(f) |Y_k(f)|^2}{\sum_{k=0}^{K-1} \lambda_k(f)}
+\end{equation}
+
+\begin{equation}
+    \mathbf{A}(f) = 
+    \begin{bmatrix}
+        w_1Y_1^{(1)}(f) & w_1Y_2^{(1)}(f) & \ldots & w_1Y_K^{(1)}(f) \\
+        w_2Y_1^{(2)}(f) & w_2Y_2^{(2)}(f) & \ldots & w_2Y_K^{(2)}(f) \\
+        \vdots & \vdots && \vdots \\
+        w_MY_1^{(M)}(f) & w_MY_2^{(M)}(f) & \ldots & w_MY_K^{(M)}(f)
+    \end{bmatrix}
+\end{equation}
+
+reference to haykin \cite{haykin2005}
+
+\begin{equation}
+    \mathbf{A}(f) = \sum_{k=0}^{K-1} \sigma_k(f) \mathbf{u}_k(f) \mathbf{v}_k^{\dag}(f)
+\end{equation}
+
+\bibliographystyle{plain}
+\bibliography{interferenceTempEstimation}
+
+\end{document}
